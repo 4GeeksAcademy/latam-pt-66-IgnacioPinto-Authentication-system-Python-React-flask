@@ -9,7 +9,7 @@ export const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const resp = await fetch(process.env.BACKEND_URL + "/api/signup", {
+            const resp = await fetch(import.meta.env.VITE_BACKEND_URL + "/api/signup", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({email, password})

@@ -9,7 +9,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
+            const resp = await fetch(import.meta.env.VITE_BACKEND_URL + "/api/login", {
                 method: "POST",
                 headers: {"content-Type": "application/json"},
                 body: JSON.stringify({email, password})
