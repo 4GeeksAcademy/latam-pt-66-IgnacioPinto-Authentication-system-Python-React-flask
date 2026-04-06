@@ -17,7 +17,7 @@ export const Signup = () => {
             if (resp.ok) navigate("/login");
             else {
                 const errorData = await resp.json()
-                alert("Error:" + errorData.msg);
+                alert("Error: " + errorData.msg);
             }
         } catch (error) {
             console.error("Error:", error);
