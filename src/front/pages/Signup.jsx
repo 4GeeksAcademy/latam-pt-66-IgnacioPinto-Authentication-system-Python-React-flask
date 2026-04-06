@@ -15,7 +15,10 @@ export const Signup = () => {
                 body: JSON.stringify({email, password})
             });
             if (resp.ok) navigate("/login");
-            else alert("Error al registrar");
+            else {
+                const errorData = await resp.json()
+                alert("Error:" + errorData.msg);
+            }
         } catch (error) {
             console.error("Error:", error);
         }
