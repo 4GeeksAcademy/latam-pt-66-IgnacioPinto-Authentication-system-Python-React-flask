@@ -10,7 +10,7 @@ export const Private = () => {
     useEffect(() => {
         const token = sessionStorage.getItem("token");
 
-        // 1. Si ni siquiera hay token se saca al usuario
+        // 1. Si no hay token se saca al usuario
         if (!token) {
             console.log("No hay token, redirigiendo a login...");
             navigate("/login");
@@ -40,7 +40,7 @@ export const Private = () => {
             }
 
             if (!response.ok) {
-              // Esto atrapará errores 404, 500, etc.
+              // Esto parte mostrara errores 404, 500, etc.
               const errorData = await response.json();
               console.error("Error del servidor:", errorData);
               return;
@@ -49,16 +49,16 @@ export const Private = () => {
             const data = await response.json();
             setUserData(data);
           } catch (error) {
-            // Aquí es donde cae el ERR_FAILED
+            // Error en consola
             console.error(
-              "No se pudo conectar con el servidor. Revisa si el puerto 3001 es público y si la URL tiene el /api",
+              "No se pudo conectar con el servidor. Revisar la visibilidad de los puertos",
             );
           }
         };
 
         verifyToken();
 
-    }, [navigate]); // navigate como dependencia por buenas prácticas de React
+    }, [navigate]); // navigate como dependencia por buenas prácticas de React para evitar bucles
 
     // Funcion q se usa y para hacer logout y salir de la zona privada
     const handleLogout = () => {

@@ -63,7 +63,7 @@ def login():
     if user is None:
         return jsonify({"msg": "Bad email or password"}), 401
 
-    # Si es correcto, se crea el token
+    # Si es correcto, se crea el token / ahora ese access token se debe convertir en string
     access_token = create_access_token(identity=str(user.id))
     return jsonify({"token": access_token, "user_id": user.id}), 200
 
