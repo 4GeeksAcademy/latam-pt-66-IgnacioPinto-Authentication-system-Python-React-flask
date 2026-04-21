@@ -64,7 +64,7 @@ def login():
         return jsonify({"msg": "Bad email or password"}), 401
 
     # Si es correcto, se crea el token
-    access_token = create_access_token(identity=user.id)
+    access_token = create_access_token(identity=str(user.id))
     return jsonify({"token": access_token, "user_id": user.id}), 200
 
 # Endpoint privado
